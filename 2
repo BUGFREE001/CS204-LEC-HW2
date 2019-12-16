@@ -1,1 +1,197 @@
 
+#1
+
+
+#include <stdio.h>
+#include <string.h>
+
+int main()
+{
+    printf("Enter a series of numbers: ");
+    char str[50]; 
+    scanf("%[^\n]%*c", str); 
+    
+    int MAX_ODD=-999;
+    int MIN_EVEN=999;
+    
+    char * n = strtok (&str," ");
+    while (n != NULL)
+    {
+        int temp = *n-'0'; 
+        if(temp%2==0)
+        {
+            if(temp<MIN_EVEN)
+                MIN_EVEN=temp;
+        }
+        else
+        {
+            if(temp>MAX_ODD)
+                MAX_ODD=temp;
+        }
+        n = strtok (NULL, " ");
+    }
+    
+    printf("%d",abs(MAX_ODD-MIN_EVEN));
+    
+    return 0;
+}
+
+
+
+-------------------------------------------------------------------------------------------------------------------------------
+
+
+#2 
+
+#include <stdio.h> 
+  
+int helper(int a, int b) 
+{ 
+
+  if (a == 1) 
+    return 1; 
+  else
+    return (helper(a - 1, b) + b-1) % a + 1; 
+} 
+  
+
+int main() 
+{ 
+
+  int a; 
+  int b; 
+  
+  printf("Enter total number of monkeys in a group: ");
+  scanf("%d", &a);
+  printf("Enter m value: ");
+  scanf("%d", &b);
+  
+  printf("The king will be %d", helper(a, b)-1); 
+  return 0; 
+}
+
+
+
+-------------------------------------------------------------------------------------------------------------------------------
+
+#3 
+
+
+#include <stdio.h>
+
+int main ()
+{
+	int a[6]={100, 50, 20, 10, 5, 1}, b[6], n, c=0;
+	
+	printf ("Enter total payment: ");
+	scanf ("%d", &n);
+	
+  
+	for (int i=0; i<6; i++)
+	{
+    b[i]= n / a[i];
+    n = n % a[i];
+    c += b[i];
+	}
+	
+
+  printf ("Result of minimum number of bills: %d\n", c);
+  for (int j=0; j<6; j++)
+  {
+    printf ("$%d bill: %d\n", a[j], b[j]);
+  }
+  
+	return 0;
+}
+
+
+
+-------------------------------------------------------------------------------------------------------------------------------
+
+
+#4
+
+
+#include <stdio.h>
+
+int main ()
+{
+	int a=1, b=0, c=0, d=0; 
+	for (int i=0; i<4; i++)
+	{
+    if (((a==0 && b==1 && c==0 && d==0)+(a==0 && b==0 && c==0 && d==1)+(c==0)+(d==0))==1){
+		  if (a==1)
+			  printf ("#1 is the best.\n");
+	      else if (b==1)
+			  printf ("#2 is the best.\n");
+		  else if (c==1)
+			  printf ("#3 is the best.\n");
+		  else
+			  printf ("#4 is the best.\n");
+		
+		  if ((a==0 && b==1 && c==0 && d==0)==1)
+			  printf(" A correct.\n");
+		  else if ((a==0 && b==0 && c==0 && d==1)==1)
+			  printf(" B correct.\n");
+		  else if ((c==0)==1)
+			  printf(" C correct.\n");
+		  else
+			  printf(" D correct.\n");
+	    }
+    {
+      int temp;
+	    temp=a;
+	    a=b;
+    	b=c;
+	    c=d;
+   	  d=temp;
+    }
+	}
+	return 0;    
+}
+
+
+
+-------------------------------------------------------------------------------------------------------------------------------
+
+
+
+#include <stdio.h>
+
+int main ()
+{
+  int r, c;
+  printf("Enter size of row & column: ");
+  scanf("%d%d", &r, &c);
+
+  printf("Enter each element: \n");
+  int a[r][c];
+  for (int i=0; i<r; i++)
+  {
+      for (int j=0; j<c; j++)
+      {
+          scanf("%d", &a[i][j]);
+      }
+  }
+
+  int ctr=0;
+  int b=a[0][0]-50;
+  for (int i=1; i<r-1; i++)
+  {
+      for (int j=1; j<c-1; j++)
+      {
+          if (a[i][j]<=b)
+          {
+              ctr+=1;
+          }
+      }
+  }
+
+  printf("Result of malignant cell detection: %d", ctr);
+
+  return 0;
+}
+
+
+
+
